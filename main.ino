@@ -2,6 +2,8 @@
 #include <ThingsBoard.h>
 #include <Servo.h>
 
+#include "tb_creds.h"
+
 #include "rpc.h"
 #include "wifi.h"
 

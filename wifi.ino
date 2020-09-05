@@ -2,6 +2,7 @@
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h>
 
+#include "wifi_creds.h"
 
 void ConnectToWifi() {
     Serial.print("Now connecting to wifi from my mac: ");
