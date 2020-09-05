@@ -1,14 +1,12 @@
 #include <ESP8266WiFi.h>
-#include <ThingsBoard.h>
 #include <Servo.h>
-
-#include "tb_creds.h"
+#include <ThingsBoard.h>
 
 #include "rpc.h"
+#include "tb_creds.h"
 #include "temp.h"
 #include "wifi.h"
 
-#define SUBMIT_INTERVAL 1000
 
 // Baud rate for debug serial
 #define SERIAL_DEBUG_BAUD 115200
@@ -26,6 +24,9 @@ void setup() {
     Serial.begin(SERIAL_DEBUG_BAUD);
     ConnectToWifi();
     mainservo.attach(16);
+
+    dht_init();
+
     lastSentTemp = 0;
 }
 

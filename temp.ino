@@ -1,27 +1,33 @@
 #include <DHT.h>
 
 // DHT
-#define DHTPIN 15
-#define DHTTYPE DHT22
+#define DHTPIN 13
+#define DHTTYPE DHT22   
+
+#define SUBMIT_INTERVAL 15000
 
 // Initialize DHT sensor.
 DHT dht(DHTPIN, DHTTYPE);
 
-double read_temp() {
-    return dht.readHumidity();
+void dht_init() {
+    Serial.println("init DHT");
+    dht.begin();
 }
 
-double read_humidity() {
+float read_temp() {
     return dht.readTemperature();
+}
+
+float read_humidity() {
+    return dht.readHumidity();
 }
 
 extern ThingsBoard tb;
 
 // read the temperature and submit it to thingsboard
-void submitTemp() {
-    double temp = read_temp();
-    Serial.println(temp);
-    tb.sendTelemetryFloat("temperature", temp);
+void submitData() {
+    tb.sendTelemetryFloat("temperature", read_temp());
+    tb.sendTelemetryFloat("humidity", read_humidity());
 }
 
 unsigned long lastSentTemp;
@@ -30,7 +36,7 @@ unsigned long lastSentTemp;
 // submitInterval time
 void submitTempScheduled() {
     if ((millis() - lastSentTemp) > SUBMIT_INTERVAL) {
-        submitTemp();
+        submitData();
         lastSentTemp = millis();
     }
 }
