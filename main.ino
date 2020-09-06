@@ -1,5 +1,4 @@
 #include <ESP8266WiFi.h>
-#include <Servo.h>
 #include <ThingsBoard.h>
 
 #include "rpc.h"
@@ -16,14 +15,14 @@ WiFiClient espClient;
 // Initialize ThingsBoard instance
 ThingsBoard tb(espClient);
 
-extern Servo mainservo;
 extern unsigned long lastSentTemp;
 
 void setup() {
+    setup_relay();
+
     // initialize serial for debugging
     Serial.begin(SERIAL_DEBUG_BAUD);
     ConnectToWifi();
-    mainservo.attach(16);
 
     dht_init();
 

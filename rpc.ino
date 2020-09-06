@@ -1,9 +1,8 @@
-#include "servo.h"
+#include "relay.h"
 
-const size_t callbacks_size = 2;
+const size_t callbacks_size = 1;
 RPC_Callback callbacks[callbacks_size] = {
-    {"set_servo", setServo},
-    {"press_button", pressButton}};
+    {"push_relay", pushRelay}};
 
 bool subscribed = false;
 
