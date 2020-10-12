@@ -1,7 +1,7 @@
 #include <ThingsBoard.h>
 #include <Servo.h>
 
-#define RELAY_PIN 12
+#define RELAY_PIN 14
 
 void setup_relay() {
     // Set relay pin
