@@ -2,6 +2,8 @@
 
 I wrote code to make my garage doors wifi controlled.
 
+Garage door opener switches are quite simple.  They usually just involve connecting two wires (can be done easily with a relay).  Sometimes they have circuits that pulse the wires to turn on the garage light or something similar.  The switches also are powered (if they have a light) from the same wires they connect.  Kinda strange.  I chose to have my device use it's own separate power.
+
 It uses an esp8266 Node MCU chip to control a [relay] that pushes the garage door button for 700ms. It uses MQTT communicating to thingsboard as the controller.  I created a dashboard to control the garage doors.
 
 The chips also have [DHT22](https://www.amazon.com/gp/product/B07XBVR532) temp and humidity monitor.
