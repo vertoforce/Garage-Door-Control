@@ -34,8 +34,6 @@ Generally to calculate the base resistor, you need to calculate your desired col
 
 I think the [relay] has a current draw of about 80ma.  `Hfe` (current gain) at approximately our numbers would be about 50-100.  Let's assume 50.  That means we need to deliver .080/50=1.6ma. Apparently it's useful to multiply that number by 5 (something I didn't know).  That gives us 8ma.  To deliver that at 3.3v-.7 (.7 voltage drop over the transistor) would be V=IR, `2.6=(.008)R`.  `R=~325ohm`. At first I tried 1kohm and it didn't open the transistor enough.  Then I tried 500ohm and it worked.
 
-[relay]:(https://www.amazon.com/gp/product/B0874LXW9Q)
-
 ## Code
 
 The code is written in c++ (arduino-style).  I have a separate hidden file `tb_creds.h` that contains two constants
@@ -44,3 +42,5 @@ The code is written in c++ (arduino-style).  I have a separate hidden file `tb_c
 #define THINGSBOARD_SERVER ""
 #define TOKEN ""
 ```
+
+[relay]: https://www.amazon.com/gp/product/B0874LXW9Q
